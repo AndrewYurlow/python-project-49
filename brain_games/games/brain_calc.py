@@ -5,8 +5,8 @@ from brain_games.scripts import game_functions as gf
 
 def main():
     greet_user()
-    print('Answer "yes" if the number is even, otherwise answer "no".')
-    gf.start(gf.get_rand_num, gf.get_correct_answer_br_even)
+    print('What is the result of the expression?')
+    gf.start(gf.get_rand_arithmetic_expr, gf.get_correct_answer_br_calc)
 
 
 if __name__ == "__main__":

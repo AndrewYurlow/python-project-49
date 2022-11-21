@@ -1,5 +1,6 @@
 import prompt
-from random import randint
+import numexpr as ne
+from random import randint, choice
 from brain_games.scripts.game_states import states
 
 
@@ -19,18 +20,30 @@ def is_even(num):
         return False
 
 
-def get_correct_answer(num):
+def get_correct_answer_br_even(num):
     if is_even(num):
         return "yes"
     else:
         return "no"
 
 
-def get_random_number():
-    return randint(1, 100)
+def get_correct_answer_br_calc(expression):
+    result = ne.evaluate(expression)
+    return f"{result}"
 
 
-def start(get_expression):
+def get_rand_numb():
+    return randint(1, 10)
+
+
+def get_rand_arithmetic_expr():
+    first_number = get_rand_numb()
+    second_number = get_rand_numb()
+    operator = choice(states["operators"])
+    return f"{first_number} {operator} {second_number}"
+
+
+def start(get_expression, get_correct_answer):
     user_state = states['user_is_won']
     questions_amount = states['question_amount']
     name = states['user_name']
