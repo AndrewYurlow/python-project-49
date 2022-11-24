@@ -33,7 +33,7 @@ def get_correct_answer_br_calc(expression):
 
 
 def get_rand_num():
-    return randint(1, 25)
+    return randint(data['rand_start'], data['rand_end'])
 
 
 def find_gcd(first, second):
@@ -76,3 +76,35 @@ def get_rand_arithmetic_expr():
     second_number = get_rand_num()
     operator = choice(data["operators"])
     return f"{first_number} {operator} {second_number}"
+
+
+def get_progression():
+    step = randint(data['progression_step_start'], data['progression_step_end'])
+    length = data['progression_len']
+    hidden_elem_index = randint(0, length - 1)
+    progression = ''
+    current_number = get_rand_num()
+    i = 0
+    while i < length:
+        if i == hidden_elem_index:
+            progression += ".. "
+        else:
+            progression += f"{current_number} "
+        current_number += step
+        i += 1
+    return progression
+
+
+def get_hidden_number(progression):
+    arr = progression.strip().split(' ')
+    hidden_num_index = arr.index('..')
+    first_half = arr[:hidden_num_index]
+    second_half = arr[hidden_num_index + 1:] if hidden_num_index != len(arr) - 1 else []
+    arr_half = first_half if len(first_half) > len(second_half) else second_half
+    step = int(arr_half[1]) - int(arr_half[0])
+    num = 0
+    if len(second_half) != 0:
+        num = int(second_half[0]) - step
+    else:
+        num = int(first_half[len(first_half) - 1]) + step
+    return f"{num}"
