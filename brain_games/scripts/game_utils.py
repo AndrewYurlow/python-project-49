@@ -15,19 +15,12 @@ def get_answer():
 
 def is_even(num):
     if num % 2 == 0:
-        return True
-    else:
-        return False
-
-
-def get_correct_answer_br_even(num):
-    if is_even(num):
         return "yes"
     else:
         return "no"
 
 
-def get_correct_answer_br_calc(expression):
+def get_result_calc(expression):
     result = ne.evaluate(expression)
     return f"{result}"
 
@@ -71,7 +64,7 @@ def get_gcd(pair):
     return f"{gcd}"
 
 
-def get_rand_arithmetic_expr():
+def get_rand_expr():
     first_number = get_rand_num()
     second_number = get_rand_num()
     operator = choice(data["operators"])
@@ -99,7 +92,9 @@ def get_hidden_number(progression):
     arr = progression.strip().split(' ')
     hidden_num_index = arr.index('..')
     first_half = arr[:hidden_num_index]
-    second_half = arr[hidden_num_index + 1:] if hidden_num_index != len(arr) - 1 else []
+    second_half = []
+    if hidden_num_index != len(arr) - 1:
+        second_half = arr[hidden_num_index + 1:]
     arr_half = first_half if len(first_half) > len(second_half) else second_half
     step = int(arr_half[1]) - int(arr_half[0])
     num = 0
