@@ -108,3 +108,13 @@ def get_hidden_number(progression):
     else:
         num = int(first_half[len(first_half) - 1]) + step
     return f"{num}"
+
+
+def is_given_number_prime(expr):
+    number = int(expr)
+    i = 2
+    while i < number / 2:
+        if number % i == 0:
+            return "no"
+        i += 1
+    return "yes"
