@@ -26,4 +26,4 @@ def end_game(name, user_game_state):
     if user_game_state:
         print(f"Congratulations, {name}!")
     else:
-        print(f"Let's try again, {name}")
+        print(f"Let's try again, {name}!")
