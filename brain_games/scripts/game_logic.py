@@ -15,8 +15,8 @@ def start(get_expression, get_correct_answer):
             print("Correct!")
             questions_amount -= 1
         else:
-            print(f"'{answer}' is wrong answer ;(.", end=' ')
-            print(f"Correct answer was '{correct_answer}'.")
+            print(f"\"{answer}\" is wrong answer ;(.", end=' ')
+            print(f"Correct answer was \"{correct_answer}\".")
             break
     if questions_amount == 0:
         user_state = True
